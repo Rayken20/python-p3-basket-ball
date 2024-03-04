@@ -182,6 +182,16 @@ def game_dict():
             ]
         }
     }
+def player_age(player_name):
+    for team in game_dict().values():
+        for player in team['players']:
+            if player['name'] == player_name:
+                return player['age']
+    return None
+player_name = input("Enter the playe name you wish to obtain age:")
+player_info = player_age(player_name)
+print(player_info)
+
 def team_colors (team_name):
     if team_name=="Cleveland Cavaliers":
         team_status= 'home'
@@ -196,19 +206,13 @@ team_name = input(str('What team colors do you want: '))
 print(team_colors(team_name))
 
 
-def player_stats(player_name):
-    for team in game_dict().values():
-        for player in team["players"]:
-            if player["name"] == player_name:
-                return player
-            
-    return None
-
-player_name = input('Enter the player name: ')
-player_info = player_stats(player_name)
-
-print(player_info)
-
+def team_names():
+    teams_dict = game_dict()
+    team_names_list = []
+    for key in teams_dict.keys():
+        team_names_list.append(teams_dict[key]["team_name"])
+    return team_names_list
+print(team_names())
 
 def player_numbers(team_name):
      if team_name == 'Cleveland Cavaliers':
@@ -222,3 +226,15 @@ def player_numbers(team_name):
      return jersey_numbers
 team_name = 'Cleveland Cavaliers'
 print (player_numbers (team_name))
+def player_stats(player_name):
+    for team in game_dict().values():
+        for player in team["players"]:
+            if player["name"] == player_name:
+                return player
+            
+    return None
+
+player_name = input('Enter the player name: ')
+player_info = player_stats(player_name)
+
+print(player_info)
