@@ -182,3 +182,43 @@ def game_dict():
             ]
         }
     }
+def team_colors (team_name):
+    if team_name=="Cleveland Cavaliers":
+        team_status= 'home'
+    elif team_name== " Washington Wizards":
+        team_status= 'away'
+    else: 
+        return []
+    team_colors=game_dict () [f"{team_status}"] ['colors']
+    return team_colors
+team_name = input(str('What team colors do you want: '))
+
+print(team_colors(team_name))
+
+
+def player_stats(player_name):
+    for team in game_dict().values():
+        for player in team["players"]:
+            if player["name"] == player_name:
+                return player
+            
+    return None
+
+player_name = input('Enter the player name: ')
+player_info = player_stats(player_name)
+
+print(player_info)
+
+
+def player_numbers(team_name):
+     if team_name == 'Cleveland Cavaliers':
+        team_status ='home'
+     elif team_name == 'Washington Wizards':
+        team_status = 'away'
+     else:
+        return []
+     players = game_dict()[f"{team_status}"]['players']
+     jersey_numbers= [player['number'] for player in players]
+     return jersey_numbers
+team_name = 'Cleveland Cavaliers'
+print (player_numbers (team_name))
